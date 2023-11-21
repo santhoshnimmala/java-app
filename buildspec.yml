@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - echo "Installing dependencies..."
+  pre_build:
+    commands:
+      - echo "Running pre-build commands..."
+  build:
+    commands:
+      - echo "Running tests..."
+      - mvn install 
+  post_build:
+    commands:
+      - echo "Building artifacts..."
+
+reports:
+  coverage:
+    files:
+      - "target/surefire-reports/*.xml"
+    file-format: JUNITXML
+artifacts:
+  files: 
+    - target/messageUtil-1.0.jar
+  
